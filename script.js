@@ -1,8 +1,16 @@
+let titleValue;
+let authorValue;
+let pagesValue;
+let readValue;
+let name;
+let bookName;
+
 const myLibrary = [];
 
-document.querySelector('#btn').disabled = true;
+function addBookButton(){
 
-function addBook(){
+    document.querySelector('#btn').disabled = true;
+    
     const container = document.querySelector('#container');
     const content = document.createElement('div');
     content.classList.add('content');
@@ -20,25 +28,28 @@ function addBook(){
     titleDiv.textContent = "Add Book"
     titleDiv.setAttribute('style','margin-top: 10px; margin-bottom: 10px; height: 50px; font-size: 30px; color: white; width: 100%;')
     
-    const nameDiv = document.createElement('input');
-    nameDiv.classList.add('nameDiv');
-    painelDiv.appendChild(nameDiv);
-    nameDiv.textContent = "Name"
-    nameDiv.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
-    nameDiv.placeholder = 'Title'
+    const nameInput = document.createElement('input');
+    nameInput.classList.add('nameInput');
+    painelDiv.appendChild(nameInput);
+    nameInput.textContent = "Name"
+    nameInput.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
+    nameInput.placeholder = 'Title'
+    nameInput.setAttribute('id','titleId')
     
-    const authorDiv = document.createElement('input');
-    authorDiv.classList.add('authorDiv');
-    painelDiv.appendChild(authorDiv);
-    authorDiv.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
-    authorDiv.placeholder = 'Author'
+    const authorInput = document.createElement('input');
+    authorInput.classList.add('authorInput');
+    painelDiv.appendChild(authorInput);
+    authorInput.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
+    authorInput.placeholder = 'Author'
+    authorInput.setAttribute('id','authorId');
 
-    const pagesDiv = document.createElement('input');
-    pagesDiv.classList.add('pagesDiv');
-    painelDiv.appendChild(pagesDiv);
-    pagesDiv.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
-    pagesDiv.placeholder = 'Pages'
-    pagesDiv.setAttribute('type','number')
+    const pagesInput = document.createElement('input');
+    pagesInput.classList.add('pagesInput');
+    painelDiv.appendChild(pagesInput);
+    pagesInput.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
+    pagesInput.placeholder = 'Pages'
+    pagesInput.setAttribute('type','number')
+    pagesInput.setAttribute('id','pagesId')
 
     const isReadDiv = document.createElement('div');
     isReadDiv.classList.add('isReadDiv');
@@ -51,11 +62,12 @@ function addBook(){
     labelDiv.textContent = 'Have you read it?'
     labelDiv.setAttribute('style','color: white; font-size: 20px;')
 
-    const readDiv = document.createElement('input');
-    readDiv.classList.add('readDiv');
-    isReadDiv.appendChild(readDiv);
-    readDiv.setAttribute('type','checkbox')
-    readDiv.setAttribute('style','margin-left: 5px; background-color: rgb(45,45,45);')
+    const readInput = document.createElement('input');
+    readInput.classList.add('readInput');
+    isReadDiv.appendChild(readInput);
+    readInput.setAttribute('type','checkbox')
+    readInput.setAttribute('style','margin-left: 5px; background-color: rgb(45,45,45);')
+    readInput.setAttribute('id','readId')
 
     const confirmButton = document.createElement('button');
     confirmButton.classList.add('confirmButton');
@@ -71,15 +83,40 @@ function addBook(){
         confirmButton.setAttribute('style','font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
     });
 
-    /*
-    const painelContainer = document.querySelector(content);
-    const painelDiv = document.createElement('div');
-    painelDiv.classList.add('painelDiv');
-    painelContainer.appendChild(painelDiv)
-    painelDiv.setAttribute('style','border: 3px solid red; padding: 20px;')
-    */
+    confirmButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const titleInput2 = document.querySelector('#titleId');
+        const authorInput2 = document.querySelector('#authorId');
+        const pagesInput2 = document.querySelector('#pagesId');
+        const readInput2 = document.querySelector('#readId');
+
+        titleValue = titleInput2.value;
+        authorValue = authorInput2.value;
+        pagesValue = pagesInput2.value;
+        readValue = readInput2.value;
+        
+        bookName = new addBook(titleValue, authorValue, pagesValue, readValue)
+
+        myLibrary.push(bookName)
+        console.log('----------------------------')
+        document.querySelector('#btn').disabled = false;
+        content.setAttribute('style','transition: 0.2s; border: 4px solid rgb(45,45,45); background-color: rgb(35, 35, 35); border-radius: 10px; display: none; text-align: center; width: 300px; height: 450px;')
+
+    })
+}
+
+function addBook(titleValue,authorValue,pagesValue,readValue){
+    this.titleValue = titleValue;
+    this.authorValue = authorValue;
+    this.pagesValue = pagesValue;
+    this.readValue = readValue;
+    this.info = function(){
+        console.log(this.titleValue + ' by ' + this.authorValue + ', ' + this.pagesValue + ' pages, ' + this.readValue)
+    }
+    addBookToLibrary();
 }
 
 function addBookToLibrary(){
-
-}
+    
+} 
