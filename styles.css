@@ -47,12 +47,15 @@ header > h1{
 }
 
 .container{
-    display: flex;
+    display: inline-grid;
     text-align: center; 
-    padding: 30px; 
+    padding: 28px; 
     height: 70vh;
-    justify-content: center;
+    width: 95%;
     align-items: center;
+    justify-content: start;
+    grid-template: 50px 50px 50px 50px 50px / 50px 50px 50px 50px 50px;
+    grid-column-end: 2;
 }
 
 footer{

@@ -15,7 +15,7 @@ function addBookButton(){
     const content = document.createElement('div');
     content.classList.add('content');
     container.appendChild(content)
-    content.setAttribute('style','transition: 0.2s; border: 4px solid rgb(45,45,45); background-color: rgb(35, 35, 35); border-radius: 10px; display: flex; text-align: center; width: 300px; height: 450px;')
+    content.setAttribute('style','margin-left: 35%; position: absolute; border: 4px solid rgb(45,45,45); background-color: rgb(35, 35, 35); border-radius: 10px; display: flex; text-align: center; width: 300px; height: 450px;')
 
     const painelDiv = document.createElement('div');
     painelDiv.classList.add('painelDiv');
@@ -99,7 +99,6 @@ function addBookButton(){
         bookName = new addBook(titleValue, authorValue, pagesValue, readValue)
 
         myLibrary.push(bookName)
-        console.log('----------------------------')
         document.querySelector('#btn').disabled = false;
         content.setAttribute('style','transition: 0.2s; border: 4px solid rgb(45,45,45); background-color: rgb(35, 35, 35); border-radius: 10px; display: none; text-align: center; width: 300px; height: 450px;')
 
@@ -118,5 +117,10 @@ function addBook(titleValue,authorValue,pagesValue,readValue){
 }
 
 function addBookToLibrary(){
-    
+    const painelItem = document.createElement('div');
+    painelItem.classList.add('painelItem');
+    container.appendChild(painelItem);
+    painelItem.setAttribute('style','color: white; margin-top: 150px; border-radius:7px; border: 3px solid rgb(60,60,60); width: 250px; height: 200px; background-color: rgb(45,45,45);')
+    painelItem.textContent = "Título: " + titleValue + "\n\nAutor: " + authorValue + "\n\n N° de Páginas: " + pagesValue;
+
 } 
