@@ -54,10 +54,5 @@ header > h1{
     width: 95%;
     align-items: center;
     justify-content: start;
-    grid-template: 250px 350px 350px 350px / 350px 350px 350px 350px;
-}
-
-footer{
-    background-color: rgb(30, 30, 30);
-    padding-bottom: 66px;
+    grid-template: 250px 350px 250px 350px / 350px 350px 350px 350px;
 }

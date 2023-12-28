@@ -73,19 +73,41 @@ function addBookButton(){
     confirmButton.classList.add('confirmButton');
     painelDiv.appendChild(confirmButton);
     confirmButton.textContent = "Submit"
-    confirmButton.setAttribute('style','font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
+    confirmButton.setAttribute('style','margin-right: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
+
+    const cancelButton = document.createElement('button');
+    cancelButton.classList.add('cancelButton');
+    painelDiv.appendChild(cancelButton);
+    cancelButton.textContent = "Cancel"
+    cancelButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
+
+    cancelButton.addEventListener('mouseover', () => {
+        cancelButton.setAttribute('style','margin-left: 5px; transition: 0.2s; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: black; border: 3px solid white; background-color: red;')
+    });
+
+    cancelButton.addEventListener('mouseout', () => {
+        cancelButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
+    });
+
+    cancelButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        content.remove();
+        document.querySelector('#btn').disabled = false;
+
+    })
 
     confirmButton.addEventListener('mouseover', () => {
-        confirmButton.setAttribute('style','transition: 0.2s; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: black; border: 3px solid white; background-color: white;')
+        confirmButton.setAttribute('style','margin-right: 5px; transition: 0.2s; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: black; border: 3px solid white; background-color: white;')
     });
 
     confirmButton.addEventListener('mouseout', () => {
-        confirmButton.setAttribute('style','font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
+        confirmButton.setAttribute('style','margin-right: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
     });
 
     confirmButton.addEventListener('click', (e) => {
         e.preventDefault();
 
+        document.getElementById('readId').checked;
         const titleInput2 = document.querySelector('#titleId');
         const authorInput2 = document.querySelector('#authorId');
         const pagesInput2 = document.querySelector('#pagesId');
@@ -119,7 +141,65 @@ function addBookToLibrary(){
     const painelItem = document.createElement('div');
     painelItem.classList.add('painelItem');
     container.appendChild(painelItem);
-    painelItem.setAttribute('style','display: flex; color: white; border-radius:7px; border: 3px solid rgb(60,60,60); width: 300px; height: 250px; background-color: rgb(45,45,45);')
-    painelItem.textContent = "Título: " + titleValue + "\n\nAutor: " + authorValue + "\n\n N° de Páginas: " + pagesValue;
+    painelItem.setAttribute('style','color: white; border-radius:7px; border: 3px solid rgb(60,60,60); width: 300px; height: 250px; background-color: rgb(45,45,45);')
+    //painelItem.textContent = "Title: " + titleValue + "\n\nAuthor: " + authorValue + "\n\n Pages: " + pagesValue;
+
+    //Titulo no painel
+
+    const painelInfoTitle = document.createElement('div');
+    painelInfoTitle.classList.add('painelInfoTitle');
+    painelItem.appendChild(painelInfoTitle);
+    painelInfoTitle.setAttribute('style','')
+
+    const painelTitle = document.createElement('p');
+    painelTitle.classList.add('painelTitle');
+    painelInfoTitle.appendChild(painelTitle);
+    painelTitle.setAttribute('style','margin-top: 10px; font-size: 35px; color: White')
+    painelTitle.textContent = titleValue;
+
+    //Autor no painel
+
+    const painelInfoAuthor = document.createElement('div');
+    painelInfoAuthor.classList.add('painelInfoAuthor');
+    painelItem.appendChild(painelInfoAuthor);
+    painelInfoAuthor.setAttribute('style','b')
+
+    const painelAuthor = document.createElement('p');
+    painelAuthor.classList.add('painelAuthor');
+    painelInfoAuthor.appendChild(painelAuthor);
+    painelAuthor.setAttribute('style','font-size: 15px; color: white')
+    painelAuthor.textContent = 'By ' + authorValue;
+    
+    //Paginas no painel
+
+    const painelInfoPages = document.createElement('div');
+    painelInfoPages.classList.add('painelInfoPages');
+    painelItem.appendChild(painelInfoPages);
+    painelInfoPages.setAttribute('style','')
+
+    const painelPages = document.createElement('p');
+    painelPages.classList.add('painelPages');
+    painelInfoPages.appendChild(painelPages);
+    painelPages.setAttribute('style','color: white')
+    painelPages.textContent = pagesValue + ' pages';
+
+    //Lido no painel
+
+    const painelInfoRead = document.createElement('div');
+    painelInfoRead.classList.add('painelInfoRead');
+    painelItem.appendChild(painelInfoRead);
+    painelInfoRead.setAttribute('style','')
+
+    const painelRead = document.createElement('p');
+    painelRead.classList.add('painelRead');
+    painelInfoRead.appendChild(painelRead);
+    painelRead.setAttribute('style','color: white; margin-bottom: 10px;')
+    painelRead.textContent = readValue;
+
+    
+    const painelButton = document.createElement('div');
+    painelButton.classList.add('painelButton');
+    painelItem.appendChild(painelButton);
+    painelButton.setAttribute('style','border: 3px solid rgb(60,60,60)')
 
 } 
