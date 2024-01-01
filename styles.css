@@ -56,3 +56,13 @@ header > h1{
     justify-content: start;
     grid-template: 250px 350px 250px 350px / 350px 350px 350px 350px;
 }
+
+.nao-lido {
+    background-color: red;
+    color: white;
+}
+
+.lido {
+    background-color: green;
+    color: white;
+}
