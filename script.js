@@ -17,7 +17,7 @@ function addBookButton(){
     container.appendChild(content)
     content.setAttribute('style','margin-left: 35%; position: absolute; border: 4px solid rgb(45,45,45); background-color: rgb(35, 35, 35); border-radius: 10px; display: flex; text-align: center; width: 300px; height: 450px;')
 
-    const painelDiv = document.createElement('div');
+    const painelDiv = document.createElement('form');
     painelDiv.classList.add('painelDiv');
     content.appendChild(painelDiv)
     painelDiv.setAttribute('style','width: 100%; padding:20px;')
@@ -32,27 +32,27 @@ function addBookButton(){
     nameInput.classList.add('nameInput');
     painelDiv.appendChild(nameInput);
     nameInput.textContent = "Name"
+    nameInput.required = true;
     nameInput.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
     nameInput.placeholder = 'Title'
     nameInput.setAttribute('id','titleId')
-    nameInput.required = true;
     
     const authorInput = document.createElement('input');
     authorInput.classList.add('authorInput');
-    painelDiv.appendChild(authorInput);
+    painelDiv.appendChild(authorInput); 
+    authorInput.required = true;
     authorInput.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
     authorInput.placeholder = 'Author'
     authorInput.setAttribute('id','authorId');
-    authorInput.required = true;
 
     const pagesInput = document.createElement('input');
     pagesInput.classList.add('pagesInput');
     painelDiv.appendChild(pagesInput);
-    pagesInput.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
-    pagesInput.placeholder = 'Pages'
-    pagesInput.setAttribute('type','number')
-    pagesInput.setAttribute('id','pagesId')
+    pagesInput.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')   
+    pagesInput.placeholder = 'Pages' 
+    pagesInput.type = 'number'
     pagesInput.required = true;
+    pagesInput.setAttribute('id','pagesId')
 
     const isReadDiv = document.createElement('div');
     isReadDiv.classList.add('isReadDiv');
@@ -71,12 +71,13 @@ function addBookButton(){
     readInput.setAttribute('type','checkbox')
     readInput.setAttribute('style','margin-left: 5px; background-color: rgb(45,45,45);')
     readInput.setAttribute('id','readId')
-    readInput.required = true;
 
     const confirmButton = document.createElement('button');
     confirmButton.classList.add('confirmButton');
     painelDiv.appendChild(confirmButton);
     confirmButton.textContent = "Submit"
+    confirmButton.type = 'submit'
+    confirmButton.value = 'Submit'
     confirmButton.setAttribute('style','margin-right: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
 
     const cancelButton = document.createElement('button');
@@ -86,7 +87,7 @@ function addBookButton(){
     cancelButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
 
     cancelButton.addEventListener('mouseover', () => {
-        cancelButton.setAttribute('style','margin-left: 5px; transition: 0.2s; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: black; border: 3px solid white; background-color: rgb(76,0,0);')
+        cancelButton.setAttribute('style','margin-left: 5px; transition: 0.2s; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: rgb(45,45,45); border: 3px solid white; background-color: white;')
     });
 
     cancelButton.addEventListener('mouseout', () => {
@@ -110,6 +111,7 @@ function addBookButton(){
 
     confirmButton.addEventListener('click', (e) => {
         e.preventDefault();
+
 
         const titleInput2 = document.querySelector('#titleId');
         const authorInput2 = document.querySelector('#authorId');
@@ -152,7 +154,7 @@ function addBookToLibrary(){
     const painelInfoTitle = document.createElement('div');
     painelInfoTitle.classList.add('painelInfoTitle');
     painelItem.appendChild(painelInfoTitle);
-    painelInfoTitle.setAttribute('style','')
+    painelInfoTitle.setAttribute('style','margin-top: 15px; margin-bottom: 5px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 300px; height:45px;')
 
     const painelTitle = document.createElement('p');
     painelTitle.classList.add('painelTitle');
@@ -165,7 +167,7 @@ function addBookToLibrary(){
     const painelInfoAuthor = document.createElement('div');
     painelInfoAuthor.classList.add('painelInfoAuthor');
     painelItem.appendChild(painelInfoAuthor);
-    painelInfoAuthor.setAttribute('style','b')
+    painelInfoAuthor.setAttribute('style','margin-bottom: 5px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; ')
 
     const painelAuthor = document.createElement('p');
     painelAuthor.classList.add('painelAuthor');
@@ -178,7 +180,7 @@ function addBookToLibrary(){
     const painelInfoPages = document.createElement('div');
     painelInfoPages.classList.add('painelInfoPages');
     painelItem.appendChild(painelInfoPages);
-    painelInfoPages.setAttribute('style','')
+    painelInfoPages.setAttribute('style','text-overflow: ellipsis; overflow: hidden; white-space: nowrap;')
 
     const painelPages = document.createElement('p');
     painelPages.classList.add('painelPages');
@@ -186,23 +188,10 @@ function addBookToLibrary(){
     painelPages.setAttribute('style','color: white; margin-bottom: 10px;')
     painelPages.textContent = pagesValue + ' pages';
 
-    //Lido no painel
-/*
-    const painelInfoRead = document.createElement('div');
-    painelInfoRead.classList.add('painelInfoRead');
-    painelItem.appendChild(painelInfoRead);
-    painelInfoRead.setAttribute('style','')
-
-    const painelRead = document.createElement('p');
-    painelRead.classList.add('painelRead');
-    painelInfoRead.appendChild(painelRead);
-    painelRead.setAttribute('style','color: white; margin-bottom: 10px;')
-    painelRead.textContent = readValue;
-*/
     const painelButton = document.createElement('div');
     painelButton.classList.add('painelButton');
     painelItem.appendChild(painelButton);
-    painelButton.setAttribute('style','margin-top: 100px;')
+    painelButton.setAttribute('style','margin-top: 60px;')
 
     const painelDeleteButton = document.createElement('button');
     painelDeleteButton.classList.add('painelDeleteButton');
@@ -232,10 +221,10 @@ function addBookToLibrary(){
 
     if(readValue == false){
         painelReadButton.textContent = 'Not Read';
-        painelReadButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: red;')
+        painelReadButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(130,0,0);')
     }else{
         painelReadButton.textContent = 'Read';
-        painelReadButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: green;')
+        painelReadButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: background-color: rgb(0,110,0);')
     }
 
     painelReadButton.addEventListener('click', () => {
@@ -248,13 +237,13 @@ function addBookToLibrary(){
 
     function redButton(){
         painelReadButton.textContent = 'Not Read';
-        painelReadButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: red;')
+        painelReadButton.setAttribute('style','transition: 0.2s;  margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(130,0,0);')
         readValue = false;
     }
 
     function greenButton(){
         painelReadButton.textContent = 'Read';
-        painelReadButton.setAttribute('style','margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: green;')
+        painelReadButton.setAttribute('style','transition: 0.2s; margin-left: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(0,110,0);')
         readValue = true;
     }
 } 

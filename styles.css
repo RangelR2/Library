@@ -47,6 +47,7 @@ header > h1{
 }
 
 .container{
+    flex-wrap: wrap;
     display: grid;
     text-align: center; 
     padding: 28px; 
@@ -55,14 +56,4 @@ header > h1{
     align-items: center;
     justify-content: start;
     grid-template: 250px 350px 250px 350px / 350px 350px 350px 350px;
-}
-
-.nao-lido {
-    background-color: red;
-    color: white;
-}
-
-.lido {
-    background-color: green;
-    color: white;
 }
