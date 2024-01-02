@@ -26,17 +26,18 @@ function addBookButton(){
     titleDiv.classList.add('titleDiv');
     painelDiv.appendChild(titleDiv);
     titleDiv.textContent = "Add Book"
+    titleDiv.setAttribute('id','theForm')
     titleDiv.setAttribute('style','margin-top: 10px; margin-bottom: 10px; height: 50px; font-size: 30px; color: white; width: 100%;')
     
     const nameInput = document.createElement('input');
     nameInput.classList.add('nameInput');
     painelDiv.appendChild(nameInput);
     nameInput.textContent = "Name"
-    nameInput.required = true;
     nameInput.setAttribute('style','color: white; margin-bottom: 25px; border: none; border-radius: 7px; background-color: rgb(50,50,50); height: 50px; width: 100%;')
     nameInput.placeholder = 'Title'
     nameInput.setAttribute('id','titleId')
-    
+    nameInput.setAttribute('required', true);
+
     const authorInput = document.createElement('input');
     authorInput.classList.add('authorInput');
     painelDiv.appendChild(authorInput); 
@@ -72,12 +73,13 @@ function addBookButton(){
     readInput.setAttribute('style','margin-left: 5px; background-color: rgb(45,45,45);')
     readInput.setAttribute('id','readId')
 
-    const confirmButton = document.createElement('button');
+    const confirmButton = document.createElement('input');
     confirmButton.classList.add('confirmButton');
     painelDiv.appendChild(confirmButton);
     confirmButton.textContent = "Submit"
-    confirmButton.type = 'submit'
+    confirmButton.type = 'button'
     confirmButton.value = 'Submit'
+    confirmButton.setAttribute('id','myButton');
     confirmButton.setAttribute('style','margin-right: 5px; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(45,45,45);')
 
     const cancelButton = document.createElement('button');
@@ -110,8 +112,13 @@ function addBookButton(){
     });
 
     confirmButton.addEventListener('click', (e) => {
-        e.preventDefault();
+        /*
+        document.getElementById("myButton").type = "submit";
+        document.getElementById("myButton").submit();
+        */
 
+
+        e.preventDefault();        
 
         const titleInput2 = document.querySelector('#titleId');
         const authorInput2 = document.querySelector('#authorId');
@@ -128,6 +135,7 @@ function addBookButton(){
         myLibrary.push(bookName)
         document.querySelector('#btn').disabled = false;
         content.remove();
+        
     })
 }
 
@@ -200,7 +208,7 @@ function addBookToLibrary(){
     painelDeleteButton.textContent = 'Delete'
 
     painelDeleteButton.addEventListener('mouseover', () => {
-        painelDeleteButton.setAttribute('style','margin-right: 5px; transition: 0.2s; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: white; border: 3px solid white; background-color: rgb(35,35,35);')
+        painelDeleteButton.setAttribute('style','margin-right: 5px; transition: 0.2s; font-size: 17px; cursor: pointer; height: 50px; width: 40%;border-radius: 7px; color: rgb(45,45,45); border: 3px solid white; background-color: white;')
     })
 
     painelDeleteButton.addEventListener('mouseout', () => {
